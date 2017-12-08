@@ -6,7 +6,7 @@
 
 using namespace std;
 
-vector <vector <Pixel> > Editor::blackAndWhite( vector <vector <Pixel> > canvas)
+vector <vector <Pixel> > Editor::blackAndWhite( vector <vector <Pixel> > & canvas)
 {
 int temporary;
 Pixel rgb;
@@ -33,7 +33,7 @@ myfile.close();
 return canvas;
 }
 
-vector <vector <Pixel> > Editor::bayer( vector <vector <Pixel> > canvas2)
+vector <vector <Pixel> > Editor::bayer( vector <vector <Pixel> > & canvas2)
 {
 Pixel rgb;
 Bitmap image;
@@ -58,7 +58,7 @@ myfile.close();
 return canvas2;
 }
 
-vector <vector <Pixel> > Editor::negative( vector <vector <Pixel> > canvas3)
+vector <vector <Pixel> > Editor::negative( vector <vector <Pixel> > & canvas3)
 {
 Pixel rgb;
 Bitmap image;
@@ -83,7 +83,7 @@ myfile.close();
 return canvas3;
 }
 
-vector <vector <Pixel> > Editor::lomo( vector <vector <Pixel> > canvas4)
+vector <vector <Pixel> > Editor::lomo( vector <vector <Pixel> > & canvas4)
 {
 Pixel rgb;
 Bitmap image;
@@ -108,24 +108,26 @@ myfile.close();
 return canvas4;
 }
 
-vector <vector <Pixel> > Editor::border(vector <vector <Pixel> > borderMe)
+vector <vector <Pixel> > Editor::border(vector <vector <Pixel> > & borderMe)
 {
-string choice;
+
+string color;
+
 cout<<"What color would you like your border to be?"<<endl;
 cout<<"(White/Black)"<<endl;
-cin>>choice;
+cin>>color;
 
-while(choice != "White" || choice != "white" || choice != "Black" || choice != "black")
+while(color != "White" && color != "white" && color != "Black" && color != "black")
 {
     cout<<"ERROR: Please enter a valid option."<<endl;
     cout<<"(White/Black)"<<endl;
-    cin>>choice;
+    cin>>color;
 }
 
-if(choice == "Black" || choice == "black")
+if(color == "Black" || color == "black")
 {
 
-int thick = 5;
+int thick = 8;
 
 for(int r = 0; r<borderMe.size(); r++)
 {
@@ -141,13 +143,19 @@ for(int r = 0; r<borderMe.size(); r++)
         }
     }
 }
+cout<<"Success!"<<endl;
+ofstream myfile;
+myfile.open("changes.txt");
+myfile<<"You have applied a black border."<<endl;
+myfile.close();
+
 return borderMe;
 }
 
-if(choice == "White" || choice == "white")
+if(color == "White" || color == "white")
 {
 
-int thick = 5;
+int thick = 8;
 
 for(int r = 0; r<borderMe.size(); r++)
 {
@@ -164,6 +172,12 @@ for(int r = 0; r<borderMe.size(); r++)
     }  
 
 }
+cout<<"Success!"<<endl;
+ofstream myfile;
+myfile.open("changes.txt");
+myfile<<"You have applied a white border."<<endl;
+myfile.close();
+
 return borderMe;
 }
 
