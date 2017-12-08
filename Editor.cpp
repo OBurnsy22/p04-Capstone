@@ -26,7 +26,7 @@ for(int x=0; x<canvas.size(); x++)
 }
 cout<<"Success!"<<endl;
 ofstream myfile;
-myfile.open ("changes.txt");
+myfile.open ("changes.txt", fstream::app);
 myfile<<"You have applied the Black and White filter."<<endl;
 myfile.close();
 
@@ -51,7 +51,7 @@ for(int x=0; x<canvas2.size(); x++)
 }
 cout<<"Success!"<<endl;
 ofstream myfile;
-myfile.open ("changes.txt");
+myfile.open ("changes.txt", fstream::app);
 myfile<<"You have applied the Bayer filter."<<endl;
 myfile.close();
 
@@ -76,7 +76,7 @@ for(int x=0; x<canvas3.size(); x++)
 }
 cout<<"Success!"<<endl;
 ofstream myfile;
-myfile.open ("changes.txt");
+myfile.open ("changes.txt", fstream::app);
 myfile<<"You have applied the inverted filter."<<endl;
 myfile.close();
 
@@ -101,7 +101,7 @@ for(int x=0; x<canvas4.size(); x++)
 }
 cout<<"Success!"<<endl;
 ofstream myfile;
-myfile.open("changes.txt");
+myfile.open("changes.txt", fstream::app);
 myfile<<"You have applied the Lomographic filter."<<endl;
 myfile.close();
 
@@ -145,7 +145,7 @@ for(int r = 0; r<borderMe.size(); r++)
 }
 cout<<"Success!"<<endl;
 ofstream myfile;
-myfile.open("changes.txt");
+myfile.open("changes.txt", fstream::app);
 myfile<<"You have applied a black border."<<endl;
 myfile.close();
 
@@ -174,7 +174,7 @@ for(int r = 0; r<borderMe.size(); r++)
 }
 cout<<"Success!"<<endl;
 ofstream myfile;
-myfile.open("changes.txt");
+myfile.open("changes.txt", fstream::app);
 myfile<<"You have applied a white border."<<endl;
 myfile.close();
 
