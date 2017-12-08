@@ -11,7 +11,6 @@ using namespace std;
 int main(){
 
 Editor photoshop;
-string line;
 char filter;
 string border;
 string fileName;
@@ -42,7 +41,7 @@ if(validBmp == true)
 
     do{
 
-    cout<<"What filter would you like to apply to your image? (You can apply multiple, althought it may not make an optimal outcome)"<<endl;
+    cout<<"What filter would you like to apply to your image? (You can apply multiple, although it may not make an optimal outcome)"<<endl;
     cout<<"(A): Black and White Filter."<<endl;
     cout<<"(B): Bayer Filter."<<endl;
     cout<<"(C): Negative Filter."<<endl;
@@ -61,22 +60,22 @@ if(validBmp == true)
             bmp = photoshop.blackAndWhite(bmp);
         }
 
-        if(filter == 'B' || filter == 'b')
+        else if(filter == 'B' || filter == 'b')
         {
             bmp = photoshop.bayer(bmp);
         }       
 
-        if(filter == 'C' || filter == 'c')
+        else if(filter == 'C' || filter == 'c')
         {
             bmp = photoshop.negative(bmp);
         }  
 
-        if(filter == 'D' || filter == 'd')
+        else if(filter == 'D' || filter == 'd')
         {
             bmp = photoshop.lomo(bmp);
         }
 
-        if(filter == 'F' || filter == 'f')
+        else if(filter == 'F' || filter == 'f')
         {
             stop++;
         }
@@ -93,7 +92,9 @@ if(border == "Yes" || border == "yes" )
     bmp = photoshop.border(bmp);
 }
 
-ifstream myfile ("example.txt");
+string line;
+ifstream myfile;
+myfile.open ("changes.txt");
 while( getline (myfile,line) )
 {
         cout<<line<<endl;
