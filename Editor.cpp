@@ -110,13 +110,28 @@ return canvas4;
 
 vector <vector <Pixel> > Editor::border(vector <vector <Pixel> > borderMe)
 {
+string choice;
+cout<<"What color would you like your border to be?"<<endl;
+cout<<"(White/Black)"<<endl;
+cin>>choice;
+
+while(choice != "White" || choice != "white" || choice != "Black" || choice != "black")
+{
+    cout<<"ERROR: Please enter a valid option."<<endl;
+    cout<<"(White/Black)"<<endl;
+    cin>>choice;
+}
+
+if(choice == "Black" || choice == "black")
+{
+
 int thick = 5;
 
 for(int r = 0; r<borderMe.size(); r++)
 {
     for(int c = 0; c<borderMe[r].size(); c++)
     {
-        if(r >= 0 && r <= thick - 1 || r >= borderMe.size() - thick - 1 && r <= borderMe.size() - 1 || c >= borderMe[0].size() - thick - 1 && c <= borderMe[0].size() -1 || c >= 0 && c <= thick -1)
+        if(r >= 0 && r <= thick - 1 || r >= borderMe.size() - thick - 1 && r <= borderMe.size() - 1 || c >= borderMe[0].size() - thick - 1 && c <= borderMe[0].size() - 1 || c >= 0 && c <= thick - 1)
         {
             rgb = borderMe[r][c];
             rgb.red = 0;
@@ -125,6 +140,31 @@ for(int r = 0; r<borderMe.size(); r++)
             borderMe[r][c] = rgb;
         }
     }
+}
+return borderMe;
+}
+
+if(choice == "White" || choice == "white")
+{
+
+int thick = 5;
+
+for(int r = 0; r<borderMe.size(); r++)
+{
+    for(int c = 0; c<borderMe[r].size(); c++)
+    {
+        if(r >=0 && r <= thick - 1 || r >= borderMe.size() - thick - 1 && r <= borderMe.size() - 1 || c >= borderMe[0].size() - thick - 1 && c <= borderMe[0].size() - 1 || c >= 0 && c <= thick - 1)
+        {
+            rgb = borderMe[r][c];
+            rgb.red = 255;
+            rgb.green = 255;
+            rgb.blue = 255;
+            borderMe[r][c] = rgb;
+        }
+    }  
+
+}
+return borderMe;
 }
 
 }
