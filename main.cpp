@@ -40,40 +40,40 @@ if(validBmp == true)
     bmp = image.toPixelMatrix();
     int stop = 1;
 
-        do{
+    do{
 
-        cout<<"What filter would you like to apply to your image? (You can apply multiple, althought it may not make an optimal outcome)"<<endl;
-        cout<<"(A): Black and White Filter."<<endl;
-        cout<<"(B): Bayer Filter."<<endl;
-        cout<<"(C): Negative Filter."<<endl;
-        cout<<"(D): Lomographic Filter."<<endl;
-        cout<<"Please enter either option A,B,C,D, or type 'F' if you are finished: "<<endl;
-        cin>>filter;
+    cout<<"What filter would you like to apply to your image? (You can apply multiple, althought it may not make an optimal outcome)"<<endl;
+    cout<<"(A): Black and White Filter."<<endl;
+    cout<<"(B): Bayer Filter."<<endl;
+    cout<<"(C): Negative Filter."<<endl;
+    cout<<"(D): Lomographic Filter."<<endl;
+    cout<<"Please enter either option A,B,C,D, or type 'F' if you are finished: "<<endl;
+    cin>>filter;
 
-      /*  while(filter != "A" || filter != "a" || filter != "B" || filter != "b" || filter != "C" || filter != "c" || filter != "D" || filter != "d" || filter != "F" || filter != "f")
+        while(filter != 'A' && filter != 'a' && filter != 'B' && filter != 'b' && filter != 'C' && filter != 'c' && filter != 'D' && filter != 'd' && filter != 'F' && filter != 'f')
         {
             cout<<"ERROR: Please enter a valid option: ";
             cin>>filter;
-        }*/
+        }
 
         if(filter == 'A' || filter == 'a')
         {
-            photoshop.blackAndWhite(bmp);
+            bmp = photoshop.blackAndWhite(bmp);
         }
 
         if(filter == 'B' || filter == 'b')
         {
-            photoshop.bayer(bmp);
+            bmp = photoshop.bayer(bmp);
         }       
 
         if(filter == 'C' || filter == 'c')
         {
-            photoshop.negative(bmp);
+            bmp = photoshop.negative(bmp);
         }  
 
         if(filter == 'D' || filter == 'd')
         {
-            photoshop.lomo(bmp);
+            bmp = photoshop.lomo(bmp);
         }
 
         if(filter == 'F' || filter == 'f')
@@ -90,7 +90,7 @@ cin>>border;
 
 if(border == "Yes" || border == "yes" )
 {
-    photoshop.border(bmp);
+    bmp = photoshop.border(bmp);
 }
 
 ifstream myfile ("example.txt");
@@ -102,8 +102,8 @@ myfile.close();
 
 photoshop.imgSave(bmp);
 
-
 }
+
 return 0;
 }
 
