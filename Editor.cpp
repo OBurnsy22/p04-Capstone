@@ -6,7 +6,7 @@
 
 using namespace std;
 
-vector <vector <Pixel> > Editor::blackAndWhite( vector <vector <Pixel> > & canvas)
+vector <vector <Pixel> > Editor::blackAndWhite( vector <vector <Pixel> > canvas)
 {
 int temporary;
 Pixel rgb;
@@ -33,7 +33,7 @@ myfile.close();
 return canvas;
 }
 
-vector <vector <Pixel> > Editor::bayer( vector <vector <Pixel> > & canvas2)
+vector <vector <Pixel> > Editor::bayer( vector <vector <Pixel> > canvas2)
 {
 Pixel rgb;
 Bitmap image;
@@ -58,7 +58,7 @@ myfile.close();
 return canvas2;
 }
 
-vector <vector <Pixel> > Editor::negative( vector <vector <Pixel> > & canvas3)
+vector <vector <Pixel> > Editor::negative( vector <vector <Pixel> > canvas3)
 {
 Pixel rgb;
 Bitmap image;
@@ -83,19 +83,20 @@ myfile.close();
 return canvas3;
 }
 
-vector <vector <Pixel> > Editor::lomo( vector <vector <Pixel> > & canvas4)
+vector <vector <Pixel> > Editor::lomo( vector <vector <Pixel> > canvas4)
 {
 Pixel rgb;
 Bitmap image;
+int temp;
 
 for(int x=0; x<canvas4.size(); x++)
 {
     for(int y=0; y<canvas4[x].size(); y++)
     {
     rgb = canvas4[x][y];
-    rgb.red = rgb.red * .33;
-    rgb.green = rgb.green * .33;
-    rgb.blue = rgb.blue;
+    rgb.red = rgb.red / 2;
+    rgb.green = rgb.green / 2;
+    rgb.blue = rgb.blue / 3;
     canvas4[x][y] = rgb;
     }
 }
@@ -108,7 +109,7 @@ myfile.close();
 return canvas4;
 }
 
-vector <vector <Pixel> > Editor::border(vector <vector <Pixel> > & borderMe)
+vector <vector <Pixel> > Editor::border(vector <vector <Pixel> > borderMe)
 {
 
 string color;
@@ -183,7 +184,7 @@ return borderMe;
 
 }
 
-void Editor::imgSave( vector <vector <Pixel> > saveMe)
+void Editor::imgSave( vector <vector <Pixel> > & saveMe)
 {
 Bitmap image;
 
